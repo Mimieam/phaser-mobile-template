@@ -32,30 +32,34 @@ GameMenu.prototype = {
     game.stage.backgroundColor = "#40322C"
     game.add.existing(this.titleText);
 
+    // create a Menu group - only use full if we want to auto adjust the entire menu
+    this.menuGroup = game.add.group();
+
     this.addMenuOption('Start \uf04b', function () {
       game.state.start("Game");
-    }, 'default' , "fa_style");
+    }, 'default' , "fa_style", this.menuGroup);
 
     this.addMenuOption('\uf013 Options', function () {
       game.state.start("Options");
-    }, 'default' , "fa_style");
+    }, 'default' , "fa_style", this.menuGroup);
 
     this.addMenuOption('Credits \uf25b', function () {
       game.state.start("Credits");
-    }, 'default' , "fa_style");
+    }, 'default' , "fa_style", this.menuGroup);
+    this.adjustBottom(10, 0, this.menuGroup)
+    console.log(this.menuGroup)
 
     /* adding UI icon*/
     this.randomRotatingIcon = this.add.text( 0, 0, '\uf1ce', { fill : '#D7D7D7', font : '64px FontAwesome' });
     this.randomRotatingIcon.x = this.randomRotatingIcon.width /2
     this.randomRotatingIcon.y = this.randomRotatingIcon.height/2
     this.randomRotatingIcon.anchor.setTo(0.5);
-    /* adding UI icon*/
-    this.mute = this.add.text( 100, 100, gameOptions.playMusic ? '\uf028':'\uf026', { fill : '#D7D7D7', font : '40px FontAwesome'});
+
+    /* adding Mute icon*/
+    this.mute = this.add.text(0, 0, gameOptions.playMusic ? '\uf028':'\uf026', { fill : '#D7D7D7', font : '40px FontAwesome'});
     this.adjustBottom(10, game.world.width, this.mute)
 
-    console.log(this.mute)
-
-    this.mute.anchor.setTo(0.5);
+    // this.mute.anchor.setTo(0.5);
 
     makeIconBtn(this.mute, function (_mute) {
       console.log("Mute that ", music.volume)

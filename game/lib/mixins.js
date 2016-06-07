@@ -89,12 +89,31 @@ var mixins = {
     /*
       if x = 0 => align bottom left
       if x = game.width => align bottom right
+      note: sprite can also be a group.
      */
     "undefined"==typeof margin&&(margin=0);
     var b=sprite.width/2+margin,
       c=sprite.height/2+margin;
-      sprite.x= x-b,
+
+    if (sprite.name == "group"){
+      var gp = sprite
+      // reset x to 0
+      gp.x = 0
+      // p
+      gp.x -= gp.getLocalBounds().x,
+
+      gp.x += (x != 0 ? x-margin : margin)
+      // reset position to 0
+      gp.y = 0
+      // place it back to the top
+      gp.y = gp.y - gp.getLocalBounds().y
+      // now alight to the bottom
+      gp.y = gp.y + game.height - gp.height - margin
+      // sprite.y +=sprite.game.height-c
+    }else {
+      sprite.x= (x != 0 ? x-b : b)
       sprite.y=sprite.game.height-c
+    }
   },
 };
 
