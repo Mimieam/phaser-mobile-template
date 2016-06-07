@@ -12,7 +12,7 @@ function makeMenuText (txt, callback, className, _style){
 }
 
 var mixins = {
-  addMenuOption: function(text, callback, className, fontOption) {
+  addMenuOption: function(text, callback, className, fontOption, group) {
     this.makeMenuText = makeMenuText
     // use the className argument, or fallback to menuConfig, but
     // if menuConfig isn't set, just use "default"
@@ -36,7 +36,9 @@ var mixins = {
       // a1 =  array1.join(" ").trim().split(" ")
       // array1 = array1.join(" ").trim().split(" ")
       array2 = text.match(re) // array of unicodes
-      array3 = utils.interleaveArrays(array1, array2)
+      array3 = array2 != null ? utils.interleaveArrays(array1, array2) : array1
+
+
       var array4 = [] // will contain phaser txt object
       var w = 0
 
@@ -53,6 +55,9 @@ var mixins = {
         w += txt.width + 10
         // console.log(w ,array3[word], a1, a1.indexOf(array3[word]) > -1 ?  true: false)
         this.makeMenuText(txt, callback, className, _style)
+        if (group) {
+          group.add(txt)
+        }
       }
 
       for (var idx in array4) { // centering bug fix... reposition the text element
@@ -71,8 +76,10 @@ var mixins = {
       );
 
       this.makeMenuText(txt, callback, className,  _style)
+      if (group) {
+        group.add(txt)
+      }
     }
-
     // create
     // use the anchor method to center if startX set to center.
 

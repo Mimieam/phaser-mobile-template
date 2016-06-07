@@ -32,26 +32,27 @@ GameMenu.prototype = {
     game.stage.backgroundColor = "#40322C"
     game.add.existing(this.titleText);
 
-    this.addMenuOption('Start', function () {
+    this.addMenuOption('Start \uf04b', function () {
       game.state.start("Game");
-    });
-    this.addMenuOption('Options', function () {
+    }, 'default' , "fa_style");
+
+    this.addMenuOption('\uf013 Options', function () {
       game.state.start("Options");
-    });
-    // this.addMenuOption('Credits', function () {
-    //   game.state.start("Credits");
-    // });
-    this.addMenuOption('Credits \uf1ce', function () {
+    }, 'default' , "fa_style");
+
+    this.addMenuOption('Credits \uf25b', function () {
       game.state.start("Credits");
     }, 'default' , "fa_style");
 
     /* adding UI icon*/
-    this.OptionIcon = this.add.text( 100, 100, '\uf1ce', { fill : '#D7D7D7', font : '64px FontAwesome' });
-    this.OptionIcon.anchor.setTo(0.5);
+    this.randomRotatingIcon = this.add.text( 0, 0, '\uf1ce', { fill : '#D7D7D7', font : '64px FontAwesome' });
+    this.randomRotatingIcon.x = this.randomRotatingIcon.width /2
+    this.randomRotatingIcon.y = this.randomRotatingIcon.height/2
+    this.randomRotatingIcon.anchor.setTo(0.5);
     /* adding UI icon*/
     this.mute = this.add.text( 100, 100, gameOptions.playMusic ? '\uf028':'\uf026', { fill : '#D7D7D7', font : '64px FontAwesome'});
-    this.mute.x = game.world.width - this.mute.width * 2
-    this.mute.y = game.world.height - this.mute.height * 2
+    this.mute.x = game.world.width - this.mute.width/2
+    this.mute.y = game.world.height - this.mute.height/2
 
     this.mute.anchor.setTo(0.5);
 
@@ -66,7 +67,7 @@ GameMenu.prototype = {
   },
 
   update: function() {
-     this.OptionIcon.angle += 1
+     this.randomRotatingIcon.angle += 1
   }
 
 };
