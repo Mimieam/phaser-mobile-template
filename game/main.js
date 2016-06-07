@@ -1,13 +1,15 @@
+'use strict';
 // Global Variables
 var
-  game = new Phaser.Game(800, 600, Phaser.AUTO, 'game'),
+  game = new Phaser.Game("100%", "100%", Phaser.AUTO, 'game'),
   Main = function () {},
   gameOptions = {
     playSound: true,
     playMusic: true
   },
-  musicPlayer;
-
+  music,
+  WebFontConfig;
+  // assets = {};
 
 
 
@@ -31,3 +33,4 @@ Main.prototype = {
 
 game.state.add('Main', Main);
 game.state.start('Main');
+

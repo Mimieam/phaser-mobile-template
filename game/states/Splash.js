@@ -1,4 +1,9 @@
+'use strict';
+
 var Splash = function () {};
+    // playSound = true,
+    // playMusic = true,
+    // music;
 
 Splash.prototype = {
 
@@ -15,21 +20,24 @@ Splash.prototype = {
 
   loadBgm: function () {
     // thanks Kevin Macleod at http://incompetech.com/
-    game.load.audio('dangerous', 'assets/bgm/Dangerous.mp3');
+    game.load.audio('dangerous', 'assets/bgm/Analog Hero.mp3');
     game.load.audio('exit', 'assets/bgm/Exit the Premises.mp3');
   },
   // varios freebies found from google image search
   loadImages: function () {
     game.load.image('menu-bg', 'assets/images/menu-bg.jpg');
     game.load.image('options-bg', 'assets/images/options-bg.jpg');
-    game.load.image('gameover-bg', 'assets/images/gameover-bg.jpg');
+    // game.load.image('gameover-bg', 'assets/images/gameover-bg.jpg');
   },
 
   loadFonts: function () {
     WebFontConfig = {
       custom: {
-        families: ['TheMinion'],
-        urls: ['assets/style/theminion.css']
+        families: ['TheMinion', 'FontAwesome'],
+        urls: ['assets/style/theminion.css', 'assets/style/font-awesome.min.css']
+      },
+      google: {
+          families: ['Sniglet', 'Monoton', 'Modak']
       }
     }
   },
@@ -42,10 +50,12 @@ Splash.prototype = {
   },
 
   preload: function () {
-    game.add.sprite(0, 0, 'stars');
+    // game.add.sprite(0, 0, 'stars');
+    game.stage.backgroundColor = "#222222";
     game.add.existing(this.logo).scale.setTo(0.5);
     game.add.existing(this.loadingBar);
     game.add.existing(this.status);
+    this.addLoadingIcon()
     this.load.setPreloadSprite(this.loadingBar);
 
     this.loadScripts();
@@ -53,6 +63,16 @@ Splash.prototype = {
     this.loadFonts();
     this.loadBgm();
 
+  },
+
+  loadUpdate: function(){
+    this.loadingIcon.angle += 5
+  },
+
+  addLoadingIcon: function() {
+        /* adding UI icon*/
+    this.loadingIcon = this.add.text(game.world.centerX-(387/2), 400, '\uf1ce', { fill : '#D7D7D7', font : '64px FontAwesome' });
+    this.loadingIcon.anchor.setTo(0.5);
   },
 
   addGameStates: function () {
@@ -67,7 +87,7 @@ Splash.prototype = {
   addGameMusic: function () {
     music = game.add.audio('dangerous');
     music.loop = true;
-    music.play();
+    // music.play();
   },
 
   create: function() {
