@@ -84,6 +84,17 @@ var mixins = {
     // use the anchor method to center if startX set to center.
 
     this.optionCount ++;
-  }
+  },
+  adjustBottom: function (margin, x, sprite){
+    /*
+      if x = 0 => align bottom left
+      if x = game.width => align bottom right
+     */
+    "undefined"==typeof margin&&(margin=0);
+    var b=sprite.width/2+margin,
+      c=sprite.height/2+margin;
+      sprite.x= x-b,
+      sprite.y=sprite.game.height-c
+  },
 };
 

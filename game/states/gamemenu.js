@@ -50,9 +50,10 @@ GameMenu.prototype = {
     this.randomRotatingIcon.y = this.randomRotatingIcon.height/2
     this.randomRotatingIcon.anchor.setTo(0.5);
     /* adding UI icon*/
-    this.mute = this.add.text( 100, 100, gameOptions.playMusic ? '\uf028':'\uf026', { fill : '#D7D7D7', font : '64px FontAwesome'});
-    this.mute.x = game.world.width - this.mute.width/2
-    this.mute.y = game.world.height - this.mute.height/2
+    this.mute = this.add.text( 100, 100, gameOptions.playMusic ? '\uf028':'\uf026', { fill : '#D7D7D7', font : '40px FontAwesome'});
+    this.adjustBottom(10, game.world.width, this.mute)
+
+    console.log(this.mute)
 
     this.mute.anchor.setTo(0.5);
 
