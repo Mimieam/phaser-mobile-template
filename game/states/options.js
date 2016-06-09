@@ -14,7 +14,7 @@ Options.prototype = {
   init: function () {
     this.titleText = game.make.text(game.world.centerX, 100, "Game Title", {
       font: '60pt Modak',
-      fill: '#FDFFB5',
+      fill: cs.heading_color,
       align: 'center'
     });
     this.titleText.setShadow(3, 3, 'rgba(0,0,0,0.5)', 5);

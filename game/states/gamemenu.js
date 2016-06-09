@@ -11,7 +11,7 @@ GameMenu.prototype = {
   init: function () {
     this.titleText = game.make.text(game.world.centerX, 100, "Game Title", {
       font: '60pt Modak',
-      fill: '#FDFFB5',
+      fill: cs.heading_color,
       align: 'center'
     });
     this.titleText.setShadow(3, 3, 'rgba(0,0,0,0.5)', 5);
@@ -29,7 +29,7 @@ GameMenu.prototype = {
     }
     game.stage.disableVisibilityChange = true;
     // game.add.sprite(0, 0, 'menu-bg');
-    game.stage.backgroundColor = "#40322C"
+    game.stage.backgroundColor = cs.background_color
     game.add.existing(this.titleText);
 
     // create a Menu group - only use full if we want to auto adjust the entire menu
@@ -46,18 +46,18 @@ GameMenu.prototype = {
     this.addMenuOption('Credits \uf25b', function () {
       game.state.start("Credits");
     }, 'default' , "fa_style", this.menuGroup);
-    this.adjustBottom(10, 0, this.menuGroup)
+    this.adjustBottom(20, 0, this.menuGroup)
     console.log(this.menuGroup)
 
     /* adding UI icon*/
-    this.randomRotatingIcon = this.add.text( 0, 0, '\uf1ce', { fill : '#D7D7D7', font : '64px FontAwesome' });
-    this.randomRotatingIcon.x = this.randomRotatingIcon.width /2
-    this.randomRotatingIcon.y = this.randomRotatingIcon.height/2
+    this.randomRotatingIcon = this.add.text( game.world.centerX, game.world.centerY, '\uf1ce', { fill : cs.accent_color, font : '64px FontAwesome' });
+    // this.randomRotatingIcon.x = this.randomRotatingIcon.width /2
+    // this.randomRotatingIcon.y = this.randomRotatingIcon.height/2
     this.randomRotatingIcon.anchor.setTo(0.5);
 
     /* adding Mute icon*/
-    this.mute = this.add.text(0, 0, gameOptions.playMusic ? '\uf028':'\uf026', { fill : '#D7D7D7', font : '40px FontAwesome'});
-    this.adjustBottom(10, game.world.width, this.mute)
+    this.mute = this.add.text(0, 0, gameOptions.playMusic ? '\uf028':'\uf026', { fill : cs.accent_color, font : '40px FontAwesome'});
+    this.adjustBottom(20, game.world.width, this.mute)
 
     // this.mute.anchor.setTo(0.5);
 
@@ -67,8 +67,7 @@ GameMenu.prototype = {
         music.volume = gameOptions.playMusic ? 1 : 0;
         music.volume ? _mute.setText('\uf028') : _mute.setText('\uf026')
     },'randomCustom', fa_style)
-    console.log(fa_style)
-
+    // console.log(fa_style)
   },
 
   update: function() {
@@ -86,9 +85,9 @@ function makeIconBtn (txt, callback, className, _style){
 
       txt.events.onInputUp.add(callback);
       txt.events.onInputOver.add(function (target) {
-        target.setStyle(_style.navitem.hover);
+        target.setStyle(fa_style.navitem.hover);
       });
       txt.events.onInputOut.add(function (target) {
-        target.setStyle(_style.navitem[className]);
+        target.setStyle(fa_style.navitem[className]);
       });
 }

@@ -1,11 +1,20 @@
 var style;
+var cs = {}; // for color scheme - humm could also good with css... but oh well
 
 // this is a wrapped function
 (function () {
 
   // the variables declared here will not be scoped anywhere and will only be accessible in this wrapped function
+
   var defaultColor = "white",
     highlightColor = "#FEFFD5";
+  /* Color Scheme*/
+  cs.base_color = "#FFB03B";
+  cs.background_color = "#E1F5FE";
+  cs.accent_color = "#046380";
+  cs.heading_color = "#01579B";
+  cs.text_color = "#CE5116";
+  cs.accent_hover_color = "#B64926";
 
   style = {
     navitem: {
@@ -15,7 +24,7 @@ var style;
         srokeThickness: 4
       },
       default: {
-        fill: defaultColor,
+        fill: cs.accent_color,
         stroke: 'rgba(0,0,0,0)'
       },
       inverse: {
@@ -23,7 +32,7 @@ var style;
         stroke: 'black'
       },
       hover: {
-        fill: highlightColor,
+        fill: cs.accent_color,
         stroke: 'rgba(200,200,200,0.5)'
       }
     },
@@ -37,7 +46,7 @@ var style;
         srokeThickness: 4
       },
       default: {
-        fill: defaultColor,
+        fill: cs.text_color,
         stroke: 'rgba(0,0,0,0)'
       },
       inverse: {
@@ -45,7 +54,7 @@ var style;
         stroke: 'black'
       },
       hover: {
-        fill: highlightColor,
+        fill: cs.accent_color,
         stroke: 'rgba(200,200,200,0.5)'
       },
       randomCustom:{
@@ -73,7 +82,7 @@ var style;
         stroke: 'black'
       },
       hover: {
-        fill: highlightColor,
+        fill: cs.accent_color,
         stroke: 'rgba(200,200,200,0.5)'
       },
 
