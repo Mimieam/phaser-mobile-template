@@ -1,4 +1,6 @@
-var Game = function(game) {};
+var Game = function(game) {
+  score = 0
+};
 
 Game.prototype = {
 
@@ -80,8 +82,8 @@ Game.prototype = {
     this.pauseBtn.resetY = this.pauseBtn.y
     // Add a input listener to unpause the game
     game.input.onDown.add(unpause, this);
-    // this.pauseBtn.anchor.setTo(0.5);
 
+    save()
   }
 };
 
@@ -103,4 +105,13 @@ function unpause(event, pauseBtn, arg) {
   } else {
     console.log("Game is Running")
   }
+}
+
+function save() {
+  // var value = storage.getItem(key); // Pass a key name to get its value.
+  if (dataStore){
+    dataStore.setItem("_highScore", 100) //
+  }
+  // var value = storage.getItem(key); // Pass a key name to get its value.
+  // storage.setItem(key, value) //
 }

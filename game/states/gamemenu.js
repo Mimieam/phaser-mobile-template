@@ -9,11 +9,7 @@ GameMenu.prototype = {
   },
 
   init: function () {
-    this.titleText = game.make.text(game.world.centerX, 100, "Game Title", {
-      font: '60pt Modak',
-      fill: cs.heading_color,
-      align: 'center'
-    });
+    this.titleText = game.make.text(game.world.centerX, 100, "Game Title", style.title.default);
     this.titleText.setShadow(3, 3, 'rgba(0,0,0,0.5)', 5);
     this.titleText.anchor.set(0.5);
     this.optionCount = 1;
@@ -50,16 +46,12 @@ GameMenu.prototype = {
     console.log(this.menuGroup)
 
     /* adding UI icon*/
-    this.randomRotatingIcon = this.add.text( game.world.centerX, game.world.centerY, '\uf1ce', { fill : cs.accent_color, font : '64px FontAwesome' });
-    // this.randomRotatingIcon.x = this.randomRotatingIcon.width /2
-    // this.randomRotatingIcon.y = this.randomRotatingIcon.height/2
+    this.randomRotatingIcon = this.add.text( game.world.centerX, game.world.centerY, '\uf269', { fill : cs.accent_color, font : '64px FontAwesome' });
     this.randomRotatingIcon.anchor.setTo(0.5);
 
     /* adding Mute icon*/
     this.mute = this.add.text(0, 0, gameOptions.playMusic ? '\uf028':'\uf026', { fill : cs.accent_color, font : '40px FontAwesome'});
     this.adjustBottom(20, game.world.width, this.mute)
-
-    // this.mute.anchor.setTo(0.5);
 
     makeIconBtn(this.mute, function (_mute) {
       console.log("Mute that ", music.volume)

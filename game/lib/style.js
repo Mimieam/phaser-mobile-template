@@ -6,6 +6,9 @@ var cs = {}; // for color scheme - humm could also good with css... but oh well
 
   // the variables declared here will not be scoped anywhere and will only be accessible in this wrapped function
 
+
+
+
   var defaultColor = "white",
     highlightColor = "#FEFFD5";
   /* Color Scheme*/
@@ -20,6 +23,13 @@ var cs = {}; // for color scheme - humm could also good with css... but oh well
   cs.fa_text_color = cs.accent_color;
 
   style = {
+    title: {
+      default: {
+        font: '60pt Modak',
+        fill: cs.heading_color,
+        align: 'center'
+      },
+    },
     navitem: {
       base: {
         font: '30pt Sniglet',
@@ -31,8 +41,8 @@ var cs = {}; // for color scheme - humm could also good with css... but oh well
         stroke: 'rgba(0,0,0,0)'
       },
       inverse: {
-        fill: 'black',
-        stroke: 'black'
+        fill: cs.accent_color,
+        stroke: cs.accent_color
       },
       hover: {
         fill: cs.accent_color,
@@ -53,8 +63,8 @@ var cs = {}; // for color scheme - humm could also good with css... but oh well
         stroke: 'rgba(0,0,0,0)'
       },
       inverse: {
-        fill: 'black',
-        stroke: 'black'
+        fill: cs.accent_color,
+        stroke: cs.accent_color
       },
       hover: {
         fill: cs.accent_color,

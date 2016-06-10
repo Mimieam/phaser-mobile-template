@@ -1,3 +1,5 @@
+'use strict';
+
 var GameOver = function(game) {};
 
 GameOver.prototype = {
@@ -6,7 +8,7 @@ GameOver.prototype = {
     this.optionCount = 1;
   },
 
-  addMenuOption: function(text, callback) {
+  addMenuOption: function(text, callback, group) {
     var optionStyle = { font: '30pt Modak', fill: cs.heading_color, align: 'left', stroke: 'rgba(0,0,0,0)', srokeThickness: 4};
     var txt = game.add.text(game.world.centerX, (this.optionCount * 80) + 300, text, optionStyle);
     txt.anchor.setTo(0.5);
@@ -22,29 +24,36 @@ GameOver.prototype = {
       target.stroke = "rgba(0,0,0,0)";
       txt.useHandCursor = false;
     };
-    //txt.useHandCursor = true;
     txt.inputEnabled = true;
     txt.events.onInputUp.add(callback, this);
     txt.events.onInputOver.add(onOver, this);
     txt.events.onInputOut.add(onOut, this);
 
     this.optionCount ++;
-
-
+    if (group) {
+      console.log(group)
+      group.add(txt)
+    }
   },
 
   create: function () {
     // game.add.sprite(0, 0, 'gameover-bg');
-    var titleStyle = { font: '60pt Modak', fill: cs.heading_color, align: 'center'};
-    var text = game.add.text(game.world.centerX, 100, "Game Over", titleStyle);
+    // var titleStyle = { font: '60pt Modak', fill: cs.heading_color, align: 'center'};
+    var text = game.add.text(game.world.centerX, 100, "Game Over", style.title.default);
     text.setShadow(3, 3, 'rgba(0,0,0,0.5)', 5);
     text.anchor.set(0.5);
+
+    this.menuGroup = game.add.group();
     this.addMenuOption('Play Again', function (e) {
       this.game.state.start("Game");
-    });
+    }, this.menuGroup);
 
     this.addMenuOption('Main Menu', function (e) {
       this.game.state.start("GameMenu");
-    })
+    }, this.menuGroup)
+
+    this.adjustBottom(20, this.game.world.centerX - this.menuGroup.width/2, this.menuGroup)
   }
 };
+
+Phaser.Utils.mixinPrototype(GameOver.prototype, mixins);

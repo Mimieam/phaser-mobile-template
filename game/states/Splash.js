@@ -1,6 +1,7 @@
 'use strict';
 
 var Splash = function () {};
+var dataStore = null;
     // playSound = true,
     // playMusic = true,
     // music;
@@ -10,6 +11,7 @@ Splash.prototype = {
   loadScripts: function () {
     game.load.script('style', 'lib/style.js');
     game.load.script('mixins', 'lib/mixins.js');
+    // game.load.script('uuid', 'lib/bower_components/node-uuid/uuid.js');
     game.load.script('WebFont', 'vendor/webfontloader.js');
     game.load.script('gamemenu','states/GameMenu.js');
     game.load.script('game', 'states/Game.js');
@@ -41,7 +43,16 @@ Splash.prototype = {
       }
     }
   },
+  connectDataStore: function(){
+    dataStore = window.localStorage;
+    if (dataStore){
+      var _highScore = dataStore.getItem("_highScore") || 0;
+      var _uuid = dataStore.getItem("_uuid") || uuid.v4();
+      dataStore.setItem("_uuid", _uuid);
+      console.log(_highScore, _uuid)
+    }
 
+  },
   init: function () {
     this.loadingBar = game.make.sprite(game.world.centerX-(387/2), 400, "loading");
     this.logo       = game.make.sprite(game.world.centerX, 200, 'brand');
@@ -56,6 +67,7 @@ Splash.prototype = {
     game.add.existing(this.loadingBar);
     game.add.existing(this.status);
     this.addLoadingIcon()
+    this.connectDataStore()
     this.load.setPreloadSprite(this.loadingBar);
 
     this.loadScripts();
@@ -94,14 +106,14 @@ Splash.prototype = {
     if (this.game.device.desktop)
     {
         this.scale.scaleMode = Phaser.ScaleManager.SHOW_ALL;
-        this.scale.setMinMax(480, 260, 1024, 768);
+        // this.scale.setMinMax(480, 260, 1024, 768);
         this.scale.pageAlignHorizontally = true;
         this.scale.pageAlignVertically = true;
     }
     else
     {
         this.scale.scaleMode = Phaser.ScaleManager.SHOW_ALL;
-        this.scale.setMinMax(480, 260, 1024, 768);
+        // this.scale.setMinMax(480, 260, 1024, 768);
         this.scale.pageAlignHorizontally = true;
         this.scale.pageAlignVertically = true;
         this.scale.forceOrientation(true, false);
