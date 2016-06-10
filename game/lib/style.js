@@ -9,12 +9,15 @@ var cs = {}; // for color scheme - humm could also good with css... but oh well
   var defaultColor = "white",
     highlightColor = "#FEFFD5";
   /* Color Scheme*/
+  cs.heading_color = "#E6E2AF";
   cs.base_color = "#FFB03B";
-  cs.background_color = "#E1F5FE";
-  cs.accent_color = "#046380";
-  cs.heading_color = "#01579B";
-  cs.text_color = "#CE5116";
-  cs.accent_hover_color = "#B64926";
+  cs.background_color = "#31152B";
+
+  cs.text_color = "#F9E4AD";
+  cs.accent_color = "#CC4452";
+  cs.accent_hover_color = "#F9E4AD";
+
+  cs.fa_text_color = cs.accent_color;
 
   style = {
     navitem: {
@@ -24,7 +27,7 @@ var cs = {}; // for color scheme - humm could also good with css... but oh well
         srokeThickness: 4
       },
       default: {
-        fill: cs.accent_color,
+        fill: cs.text_color,
         stroke: 'rgba(0,0,0,0)'
       },
       inverse: {
@@ -46,7 +49,7 @@ var cs = {}; // for color scheme - humm could also good with css... but oh well
         srokeThickness: 4
       },
       default: {
-        fill: cs.text_color,
+        fill: cs.fa_text_color,
         stroke: 'rgba(0,0,0,0)'
       },
       inverse: {

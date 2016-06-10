@@ -25,8 +25,7 @@ Options.prototype = {
     var playSound = gameOptions.playSound,
         playMusic = gameOptions.playMusic;
 
-    console.log(music)
-    game.add.sprite(0, 0, 'options-bg');
+    // game.add.sprite(0, 0, 'options-bg');
     game.add.existing(this.titleText);
     this.addMenuOption(playMusic ? 'Mute Music' : 'Play Music', function (target) {
       playMusic = !playMusic;
