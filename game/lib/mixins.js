@@ -76,6 +76,7 @@ var mixins = {
       );
 
       this.makeMenuText(txt, callback, className,  _style)
+
       if (group) {
         group.add(txt)
       }
@@ -102,7 +103,7 @@ var mixins = {
       // p
       gp.x -= gp.getLocalBounds().x,
 
-      gp.x += (x != 0 ? x-margin : margin)
+      gp.x += (x != 0 ? (x >= game.width? game.width - margin: x) : margin)
       // reset position to 0
       gp.y = 0
       // place it back to the top

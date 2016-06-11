@@ -39,7 +39,7 @@ Splash.prototype = {
         urls: ['assets/style/theminion.css', 'assets/style/font-awesome.min.css']
       },
       google: {
-          families: ['Sniglet', 'Monoton', 'Modak']
+          families: ['Sniglet', 'Modak']
       }
     }
   },

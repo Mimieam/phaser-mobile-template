@@ -63,7 +63,7 @@ var cs = {}; // for color scheme - humm could also good with css... but oh well
         stroke: 'rgba(0,0,0,0)'
       },
       inverse: {
-        fill: cs.accent_color,
+        fill: cs.accent_hover_color,
         stroke: cs.accent_color
       },
       hover: {

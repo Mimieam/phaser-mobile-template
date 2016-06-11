@@ -59,7 +59,6 @@ GameMenu.prototype = {
         music.volume = gameOptions.playMusic ? 1 : 0;
         music.volume ? _mute.setText('\uf028') : _mute.setText('\uf026')
     },'randomCustom', fa_style)
-    // console.log(fa_style)
   },
 
   update: function() {

@@ -9,7 +9,14 @@ GameOver.prototype = {
   },
 
   addMenuOption: function(text, callback, group) {
-    var optionStyle = { font: '30pt Modak', fill: cs.heading_color, align: 'left', stroke: 'rgba(0,0,0,0)', srokeThickness: 4};
+    var optionStyle = {
+      font: '30pt Modak',
+      fill: cs.heading_color,
+      align: 'left',
+      stroke: 'rgba(0,0,0,0)',
+      srokeThickness: 4
+    };
+
     var txt = game.add.text(game.world.centerX, (this.optionCount * 80) + 300, text, optionStyle);
     txt.anchor.setTo(0.5);
     txt.stroke = "rgba(0,0,0,0";
@@ -31,7 +38,6 @@ GameOver.prototype = {
 
     this.optionCount ++;
     if (group) {
-      console.log(group)
       group.add(txt)
     }
   },
@@ -52,7 +58,7 @@ GameOver.prototype = {
       this.game.state.start("GameMenu");
     }, this.menuGroup)
 
-    this.adjustBottom(20, this.game.world.centerX - this.menuGroup.width/2, this.menuGroup)
+    this.adjustBottom(20, game.world.centerX - this.menuGroup.width/2, this.menuGroup)
   }
 };
 

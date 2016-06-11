@@ -25,7 +25,13 @@ Credits.prototype = {
   },
 
   addMenuOption: function(text, callback) {
-    var optionStyle = { font: '30pt Modak', fill: 'white', align: 'left', stroke: 'rgba(0,0,0,0)', srokeThickness: 4};
+    var optionStyle = {
+      font: '30pt Modak',
+      fill: 'white',
+      align: 'left',
+      stroke: 'rgba(0,0,0,0)',
+      srokeThickness: 4
+    };
     var txt = game.add.text(10, (this.optionCount * 80) + 450, text, optionStyle);
 
     txt.stroke = "rgba(0,0,0,0";
@@ -40,7 +46,7 @@ Credits.prototype = {
       target.stroke = "rgba(0,0,0,0)";
       txt.useHandCursor = false;
     };
-    //txt.useHandCursor = true;
+
     txt.inputEnabled = true;
     txt.events.onInputUp.add(callback, this);
     txt.events.onInputOver.add(onOver, this);
@@ -56,7 +62,8 @@ Credits.prototype = {
       music = game.add.audio('exit');
       music.play();
     }
-    var bg = game.add.sprite(0, 0, 'gameover-bg');
+    game.stage.backgroundColor = '#222222'
+    // var bg = game.add.sprite(0, 0, 'gameover-bg');
     this.addCredit('Music', 'Kevin Macleod');
     this.addCredit('Developer', 'Matt McFarland');
     this.addCredit('Lorem Ipsum', 'Mipsem Dempsum');
@@ -66,7 +73,7 @@ Credits.prototype = {
     this.addMenuOption('<- Back', function (e) {
       game.state.start("GameMenu");
     });
-    game.add.tween(bg).to({alpha: 0}, 20000, Phaser.Easing.Cubic.Out, true, 40000);
+    // game.add.tween(bg).to({alpha: 0}, 20000, Phaser.Easing.Cubic.Out, true, 40000);
   }
 
 };
