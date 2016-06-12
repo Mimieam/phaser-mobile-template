@@ -3,7 +3,7 @@
 var Game = function(game) {
   this.score = parseInt(dataStore.getItem("_highScore" ,10)) || 0
   this.autoSave = true
-  this.savingInterval = 5000 // every 15 sec
+  this.savingInterval = 30000 // every 30 sec
   this.lastSave = 0
   this.savedText = null;
 };
@@ -94,9 +94,9 @@ Game.prototype = {
     });
 
     this.pauseBtn = this.makeIconBtn(game.world.width, 0, '\uf28c',
-      { fill : cs.accent_color, font : '64px FontAwesome' },
+      fa_style.btn.pause,
       function (btn) {
-        var twn = game.add.tween(btn).to( {fontSize: "300px", x: game.world.centerX, y:game.world.centerY }, 500, Phaser.Easing.Cubic.In, true, 200);
+        var twn = game.add.tween(btn).to( {fontSize: "300px", x: game.world.centerX, y:game.world.centerY , backgroundColor:'rgba(200,200,200,0.5)'}, 500, Phaser.Easing.Cubic.In, true, 200);
         twn.onComplete.add(function () { game.paused = true; }) // pause after tweening
       }, this)
 
@@ -112,7 +112,6 @@ Game.prototype = {
     this.scoreText.setText( "Score: " + (this.score|1) );
     this.scoreText.x = game.world.centerX - this.scoreText.width/2;
     var _tm = game.time.time
-    // console.log("Saving ?? -> " +  this.lastSave, _tm, ">=",  this.savingInterval)
 
     if (this.autoSave && _tm - this.lastSave >= this.savingInterval){
       this.save()

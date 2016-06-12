@@ -52,6 +52,13 @@ var cs = {}; // for color scheme - humm could also good with css... but oh well
   };
 
   fa_style = {
+    btn:{
+      pause:{
+        fill : cs.accent_color,
+        font : '40px FontAwesome',
+        backgroundColor: 'rgba(222,0,0,0.25)'
+      },
+    },
     navitem: {
       base: {
         font: '40px FontAwesome',

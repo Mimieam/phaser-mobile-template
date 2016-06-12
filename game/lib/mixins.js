@@ -1,15 +1,3 @@
-function makeMenuText (txt, callback, className, _style){
-      txt.anchor.setTo(this.menuConfig.startX === "center" ? 0.5 : 0.0);
-      txt.inputEnabled = true;
-
-      txt.events.onInputUp.add(callback);
-      txt.events.onInputOver.add(function (target) {
-        target.setStyle(_style.navitem.hover);
-      });
-      txt.events.onInputOut.add(function (target) {
-        target.setStyle(_style.navitem[className]);
-      });
-}
 
 var mixins = {
   addMenuOption: function(text, callback, className, fontOption, group) {
@@ -118,3 +106,15 @@ var mixins = {
   },
 };
 
+function makeMenuText (txt, callback, className, _style){
+      txt.anchor.setTo(this.menuConfig.startX === "center" ? 0.5 : 0.0);
+      txt.inputEnabled = true;
+
+      txt.events.onInputUp.add(callback);
+      txt.events.onInputOver.add(function (target) {
+        target.setStyle(_style.navitem.hover);
+      });
+      txt.events.onInputOut.add(function (target) {
+        target.setStyle(_style.navitem[className]);
+      });
+}

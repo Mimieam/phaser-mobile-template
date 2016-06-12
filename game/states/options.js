@@ -1,6 +1,8 @@
 'use strict';
 
-var Options = function(game) {};
+var Options = function(game) {
+
+};
 
 Options.prototype = {
 
@@ -19,7 +21,8 @@ Options.prototype = {
   },
   create: function () {
     var playSound = gameOptions.playSound,
-        playMusic = gameOptions.playMusic;
+        playMusic = gameOptions.playMusic,
+        autoSave = game.state.states.Game.autoSave;
 
     game.add.existing(this.titleText);
 
@@ -34,6 +37,11 @@ Options.prototype = {
     this.addMenuOption(playSound ? 'Mute Sound' : 'Play Sound', function (target) {
       playSound = !playSound;
       target.text = playSound ? 'Mute Sound' : 'Play Sound';
+    },'', "", this.menuGroup);
+
+    this.addMenuOption(autoSave ? 'AutoSave On' : 'AutoSave Off', function (target) {
+      autoSave = !autoSave;
+      target.text = autoSave ? 'AutoSave On' : 'AutoSave Off';
     },'', "", this.menuGroup);
 
     this.addMenuOption('\uf0a8 Back', function () {
