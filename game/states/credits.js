@@ -62,7 +62,7 @@ Credits.prototype = {
       music = game.add.audio('exit');
       music.play();
     }
-    game.stage.backgroundColor = '#222222'
+    // game.stage.backgroundColor = '#222222'
     // var bg = game.add.sprite(0, 0, 'gameover-bg');
     this.addCredit('Music', 'Kevin Macleod');
     this.addCredit('Developer', 'Matt McFarland');

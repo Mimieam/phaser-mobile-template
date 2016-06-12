@@ -56,7 +56,7 @@ var cs = {}; // for color scheme - humm could also good with css... but oh well
       pause:{
         fill : cs.accent_color,
         font : '40px FontAwesome',
-        backgroundColor: 'rgba(222,0,0,0.25)'
+        // backgroundColor: 'rgba(222,0,0,0.25)'
       },
     },
     navitem: {

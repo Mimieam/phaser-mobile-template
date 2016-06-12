@@ -78,7 +78,7 @@ Game.prototype = {
   create: function () {
     this.stage.disableVisibilityChange = false;
 
-    game.add.sprite(0, 0, 'stars');
+    // game.add.sprite(0, 0, 'stars');
 
     this.scoreText = game.make.text(game.world.centerX, 20, "Score: " + this.score, { font: '30pt Sniglet', fill: 'white', align: 'left', stroke: 'rgba(0,0,0,0)', srokeThickness: 4});
     this.scoreText.x = game.world.centerX - this.scoreText.width/2
@@ -93,11 +93,23 @@ Game.prototype = {
       this.game.state.start("GameOver");
     });
 
+
+    this.blurLayer = game.add.tileSprite(0, 0, game.world.width, game.world.height, 'blur-bg');
+    // this.blurLayer.visible = false
+    this.blurLayer.alpha = 0
+
     this.pauseBtn = this.makeIconBtn(game.world.width, 0, '\uf28c',
       fa_style.btn.pause,
       function (btn) {
+
+        var blurLayer = game.state.getCurrentState().blurLayer
+
+        var blurTwn = game.add.tween(blurLayer).to( {alpha: 1}, 200, Phaser.Easing.Cubic.In, true, 200);
         var twn = game.add.tween(btn).to( {fontSize: "300px", x: game.world.centerX, y:game.world.centerY , backgroundColor:'rgba(200,200,200,0.5)'}, 500, Phaser.Easing.Cubic.In, true, 200);
-        twn.onComplete.add(function () { game.paused = true; }) // pause after tweening
+        twn.onComplete.add(function () {
+          // console.log(btn)
+          game.paused = true;
+        }) // pause after tweening
       }, this)
 
     this.pauseBtn.resetX = this.pauseBtn.x
@@ -138,6 +150,10 @@ function unpause(event, pauseBtn, arg) {
       game.paused = false;
       // I'm not sure why but a negative found size does reduce the pause button back
       game.add.tween(pauseBtn).to( { fontSize: "-300px", x: pauseBtn.resetX, y: pauseBtn.resetY }, 500, Phaser.Easing.Cubic.In, true, 200);
+
+      var blurLayer = game.state.getCurrentState().blurLayer
+      game.add.tween(blurLayer).to( {alpha: 0}, 200, Phaser.Easing.Cubic.In, true, 200);
+
     }
   } else {
     console.log("Game is Running")
