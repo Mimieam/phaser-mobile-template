@@ -5,6 +5,8 @@ var mixins = {
     // use the className argument, or fallback to menuConfig, but
     // if menuConfig isn't set, just use "default"
     className || (className = this.menuConfig.className || 'default');
+    var verticalSpacing = this.menuConfig.verticalSpacing || 80;
+    console.log("verticalSpacing = ", verticalSpacing)
 
     // set the x coordinate to game.world.center if we use "center"
     // otherwise set it to menuConfig.startX
@@ -35,7 +37,7 @@ var mixins = {
         _style = array1.indexOf(array3[word]) > -1 ?  style : fa_style
         var txt = game.add.text(
           x + w,
-          (this.optionCount * 80) + y,
+          (this.optionCount * verticalSpacing) + y,
           array3[word],
            _style.navitem[className]
         );
@@ -58,7 +60,7 @@ var mixins = {
       _style = style
       var txt = game.add.text(
         x,
-        (this.optionCount * 80) + y,
+        (this.optionCount * verticalSpacing) + y,
         text,
         _style.navitem[className]
       );

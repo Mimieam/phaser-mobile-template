@@ -9,7 +9,8 @@ Options.prototype = {
   menuConfig: {
     className: "inverse",
     startY: 260,
-    startX: "center"
+    startX: "center",
+    verticalSpacing: (game.world.height > game.world.width ? 80 : 60)
   },
 
 
