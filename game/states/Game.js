@@ -2,7 +2,7 @@
 
 var Game = function(game) {
   this.score = parseInt(dataStore.getItem("_highScore" ,10)) || 0
-  this.autoSave = true
+  // this.autoSave = true
   this.savingInterval = 30000 // every 30 sec
   this.lastSave = 0
   this.savedText = null;
@@ -125,7 +125,7 @@ Game.prototype = {
     this.scoreText.x = game.world.centerX - this.scoreText.width/2;
     var _tm = game.time.time
 
-    if (this.autoSave && _tm - this.lastSave >= this.savingInterval){
+    if (gameOptions.autoSave && _tm - this.lastSave >= this.savingInterval){
       this.save()
       this.lastSave = _tm
       this.savedText.visible = true

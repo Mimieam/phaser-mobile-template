@@ -23,7 +23,7 @@ Options.prototype = {
   create: function () {
     var playSound = gameOptions.playSound,
         playMusic = gameOptions.playMusic,
-        autoSave = game.state.states.Game.autoSave;
+        autoSave = gameOptions.autoSave;
 
     game.add.existing(this.titleText);
 
@@ -43,6 +43,7 @@ Options.prototype = {
     this.addMenuOption(autoSave ? 'AutoSave On' : 'AutoSave Off', function (target) {
       autoSave = !autoSave;
       target.text = autoSave ? 'AutoSave On' : 'AutoSave Off';
+      gameOptions.autoSave = autoSave
     },'', "", this.menuGroup);
 
     this.addMenuOption('\uf0a8 Back', function () {

@@ -108,6 +108,7 @@ var cs = {}; // for color scheme - humm could also good with css... but oh well
 
     }
   };
+
   fa_style.overrideOnly = function (_styleObj, newStyle) {
     Object.assign(_styleObj, newStyle)
   }

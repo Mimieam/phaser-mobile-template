@@ -5,7 +5,8 @@ var
   Main = function () {},
   gameOptions = {
     playSound: true,
-    playMusic: true
+    playMusic: true,
+    autoSave: true,
   },
   music,
   WebFontConfig;
