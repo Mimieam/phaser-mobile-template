@@ -83,7 +83,7 @@ Centering a menu at the bottom of the screen
   this.adjustBottom(20, game.world.centerX - this.menuGroup.width/2, this.menuGroup)
 ```
 
-## Screenshot
+## Screenshots
 ![alt text][img]
 
 ## Acknowledgments
@@ -91,5 +91,8 @@ Centering a menu at the bottom of the screen
 
 
 
-[img]: https://imgur.com/gQtFIY1 "demo"
-[alt text]: screenshot
+[img]: https://raw.githubusercontent.com/Mimieam/phaser-mobile-template/master/doc/landscape%20and%20portrait.png "demo"
+[alt text]: screenshots
+
+
+Thank you :)
