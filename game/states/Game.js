@@ -20,7 +20,7 @@ Game.prototype = {
       fill: 'white',
       align: 'left',
       stroke: 'rgba(0,0,0,0)',
-      srokeThickness: 4
+      strokeThickness: 4
     };
 
     var txt = game.add.text(game.world.centerX, (this.optionCount * 80) + 200, text, optionStyle);
