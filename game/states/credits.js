@@ -9,8 +9,8 @@ Credits.prototype = {
   },
 
   addCredit: function(task, author) {
-    var authorStyle = { font: '40pt Modak', fill: 'white', align: 'center', stroke: 'rgba(0,0,0,0)', srokeThickness: 4};
-    var taskStyle = { font: '30pt Modak', fill: 'white', align: 'center', stroke: 'rgba(0,0,0,0)', srokeThickness: 4};
+    var authorStyle = { font: '40pt Modak', fill: 'white', align: 'center', stroke: 'rgba(0,0,0,0)', strokeThickness: 4};
+    var taskStyle = { font: '30pt Modak', fill: 'white', align: 'center', stroke: 'rgba(0,0,0,0)', strokeThickness: 4};
     var authorText = game.add.text(game.world.centerX, 900, author, authorStyle);
     var taskText = game.add.text(game.world.centerX, 950, task, taskStyle);
     authorText.anchor.setTo(0.5);
@@ -30,11 +30,11 @@ Credits.prototype = {
       fill: 'white',
       align: 'left',
       stroke: 'rgba(0,0,0,0)',
-      srokeThickness: 4
+      strokeThickness: 4
     };
     var txt = game.add.text(10, (this.optionCount * 80) + 450, text, optionStyle);
 
-    txt.stroke = "rgba(0,0,0,0";
+    txt.stroke = "rgba(0,0,0,0)";
     txt.strokeThickness = 4;
     var onOver = function (target) {
       target.fill = "#FEFFD5";
